@@ -1,0 +1,281 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>ShoeZone - Online Shoe Store</title>
+
+<style>
+* {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+    font-family: Arial, sans-serif;
+}
+
+body {
+    background: #f5f5f5;
+    color: #222;
+}
+
+header {
+    background: #111;
+    color: white;
+    padding: 20px 7%;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+}
+
+.logo {
+    font-size: 28px;
+    font-weight: bold;
+    color: #ff6600;
+}
+
+nav a {
+    color: white;
+    text-decoration: none;
+    margin: 0 12px;
+}
+
+.cart {
+    background: #ff6600;
+    padding: 10px 16px;
+    border-radius: 5px;
+}
+
+.hero {
+    background: linear-gradient(90deg, #111, #444);
+    color: white;
+    text-align: center;
+    padding: 90px 20px;
+}
+
+.hero h1 {
+    font-size: 45px;
+    margin-bottom: 15px;
+}
+
+.hero p {
+    font-size: 18px;
+    margin-bottom: 25px;
+}
+
+.hero button {
+    background: #ff6600;
+    border: none;
+    padding: 14px 30px;
+    color: white;
+    font-size: 16px;
+    cursor: pointer;
+    border-radius: 5px;
+}
+
+.products {
+    padding: 50px 7%;
+}
+
+.products h2 {
+    text-align: center;
+    font-size: 32px;
+    margin-bottom: 25px;
+}
+
+.search {
+    display: block;
+    margin: 0 auto 30px;
+    width: 90%;
+    max-width: 400px;
+    padding: 12px;
+    border: 1px solid #ccc;
+    border-radius: 5px;
+}
+
+.product-container {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+    gap: 25px;
+}
+
+.product {
+    background: white;
+    border-radius: 10px;
+    overflow: hidden;
+    text-align: center;
+    padding-bottom: 20px;
+    box-shadow: 0 3px 12px #ddd;
+    transition: 0.3s;
+}
+
+.product:hover {
+    transform: translateY(-7px);
+}
+
+.product img {
+    width: 100%;
+    height: 210px;
+    object-fit: cover;
+}
+
+.product h3 {
+    margin: 15px 0 8px;
+}
+
+.price {
+    color: #ff6600;
+    font-weight: bold;
+    font-size: 20px;
+    margin: 10px;
+}
+
+.product button {
+    background: #111;
+    color: white;
+    border: none;
+    padding: 11px 22px;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.product button:hover {
+    background: #ff6600;
+}
+
+footer {
+    background: #111;
+    color: white;
+    text-align: center;
+    padding: 25px;
+    margin-top: 40px;
+}
+
+@media(max-width: 600px) {
+    .hero h1 {
+        font-size: 30px;
+    }
+
+    header {
+        justify-content: center;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+    <div class="logo">ShoeZone</div>
+
+    <nav>
+        <a href="#">Home</a>
+        <a href="#products">Products</a>
+        <a href="#footer">Contact</a>
+    </nav>
+
+    <div class="cart">
+        🛒 Cart: <span id="cart-count">0</span>
+    </div>
+</header>
+
+<section class="hero">
+    <h1>Step Into Style</h1>
+    <p>Discover the latest collection of stylish and comfortable shoes.</p>
+    <button onclick="document.getElementById('products').scrollIntoView()">
+        Shop Now
+    </button>
+</section>
+
+<section class="products" id="products">
+    <h2>Our Latest Collection</h2>
+
+    <input
+        type="text"
+        class="search"
+        id="search"
+        placeholder="Search shoes..."
+        oninput="searchProducts()"
+    >
+
+    <div class="product-container" id="product-container">
+
+        <div class="product" data-name="dihh master">
+            <img src="images\black opium.jpeg" alt="Red sports shoes">
+            <h3>Nike Running Shoes</h3>
+            <p class="price">₹2,499</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="product" data-name="hood shoe">
+            <img src="images\GANG GANG.jpeg" alt="Casual sneakers">
+            <h3>Casual Sneakers</h3>
+            <p class="price">₹1,999</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="product" data-name="lady killer">
+            <img src="images\HEEL CHOR.jpeg" alt="White sports shoes">
+            <h3>White Sports Shoes</h3>
+            <p class="price">₹2,199</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="product" data-name="luio mutton">
+            <img src="images\LV.jpeg" alt="Black sneakers">
+            <h3>Black Sneakers</h3>
+            <p class="price">₹1,799</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="product" data-name="opium">
+            <img src="images\OPIUM.jpeg" alt="Running shoes">
+            <h3>Classic Running Shoes</h3>
+            <p class="price">₹2,799</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+        <div class="product" data-name="Fashion Sneakers">
+            <img src="https://images.unsplash.com/photo-1549298916-b41d501d3772?w=600" alt="Fashion sneakers">
+            <h3>Fashion Sneakers</h3>
+            <p class="price">₹2,299</p>
+            <button onclick="addToCart()">Add to Cart</button>
+        </div>
+
+    </div>
+</section>
+
+<footer id="footer">
+    <h3>ShoeZone</h3>
+    <p>Your Style, Your Shoes!</p>
+    <p>© 2026 ShoeZone. All Rights Reserved.</p>
+</footer>
+
+<script>
+let cartCount = 0;
+
+function addToCart() {
+    cartCount++;
+    document.getElementById("cart-count").innerText = cartCount;
+    alert("Product added to cart!");
+}
+
+function searchProducts() {
+    let searchValue = document.getElementById("search")
+        .value.toLowerCase();
+
+    let products = document.querySelectorAll(".product");
+
+    products.forEach(product => {
+        let name = product.dataset.name.toLowerCase();
+
+        product.style.display =
+            name.includes(searchValue) ? "block" : "none";
+    });
+}
+</script>
+
+</body>
+</html>
