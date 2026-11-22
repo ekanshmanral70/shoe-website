@@ -6,7 +6,7 @@ services:
     environment:
       - APP_NAME=ShoeZone-1
     expose:
-      - "3000"
+      - "3001"
 
   app2:
     build: .
@@ -14,7 +14,7 @@ services:
     environment:
       - APP_NAME=ShoeZone-2
     expose:
-      - "3000"
+      - "3002"
 
   app3:
     build: .
@@ -22,7 +22,7 @@ services:
     environment:
       - APP_NAME=ShoeZone-3
     expose:
-      - "3000"
+      - "3003"
 
   nginx:
     image: nginx:alpine
